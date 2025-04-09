@@ -1,5 +1,6 @@
-package com.pi.projet.entity;
+package tn.esprit.pi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,5 +19,7 @@ public class Reponse {
     private Boolean status;
     private String message;
     @OneToOne
+    @JsonManagedReference
     private Rendezvous rendezvous;
+
 }

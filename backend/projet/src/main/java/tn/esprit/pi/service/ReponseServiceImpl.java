@@ -1,17 +1,17 @@
-package com.pi.projet.service;
+package tn.esprit.pi.service;
 
-import com.pi.projet.entity.Reponse;
-import com.pi.projet.repository.ReponseRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.pi.entity.Reponse;
+import tn.esprit.pi.repository.ReponseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-
 @Service
 @AllArgsConstructor
 
-public class ReponseServiceImpl implements IReponseService{
+public class ReponseServiceImpl implements IReponseService {
     public ReponseRepository reponseRepository;
 
     // Retrieve all blocs
@@ -38,7 +38,6 @@ public class ReponseServiceImpl implements IReponseService{
     public Reponse modifyReponse(Reponse reponse) {
         return reponseRepository.save(reponse);
     }
-
 
 
 

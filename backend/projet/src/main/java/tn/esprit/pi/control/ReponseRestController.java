@@ -1,15 +1,17 @@
-package com.pi.projet.control;
+package tn.esprit.pi.control;
 
-import com.pi.projet.entity.Reponse;
-import com.pi.projet.service.IReponseService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.pi.entity.Rendezvous;
+import tn.esprit.pi.entity.Reponse;
+import tn.esprit.pi.service.IReponseService;
 
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/reponse")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReponseRestController {
     public IReponseService reponseService;
 

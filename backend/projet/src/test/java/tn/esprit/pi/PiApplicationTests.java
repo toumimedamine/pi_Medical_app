@@ -1,10 +1,10 @@
-package com.pi.projet;
+package tn.esprit.pi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BachendApplicationTests {
+class PiApplicationTests {
 
 	@Test
 	void contextLoads() {

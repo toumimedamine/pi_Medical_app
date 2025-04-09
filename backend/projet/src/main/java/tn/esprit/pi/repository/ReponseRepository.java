@@ -1,7 +1,7 @@
-package com.pi.projet.repository;
+package tn.esprit.pi.repository;
 
-import com.pi.projet.entity.Reponse;
 import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.pi.entity.Reponse;
 
 public interface ReponseRepository extends JpaRepository<Reponse, Long> {
 }

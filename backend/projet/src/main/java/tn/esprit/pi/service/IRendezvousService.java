@@ -1,6 +1,6 @@
-package com.pi.projet.service;
+package tn.esprit.pi.service;
 
-import com.pi.projet.entity.Rendezvous;
+import tn.esprit.pi.entity.Rendezvous;
 
 import java.util.List;
 

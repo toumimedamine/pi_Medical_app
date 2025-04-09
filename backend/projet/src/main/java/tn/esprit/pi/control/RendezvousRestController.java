@@ -1,17 +1,20 @@
-package com.pi.projet.control;
+package tn.esprit.pi.control;
 
-import com.pi.projet.entity.Rendezvous;
-import com.pi.projet.service.IRendezvousService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.pi.entity.Rendezvous;
+import tn.esprit.pi.service.IRendezvousService;
 
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/rendezvous")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RendezvousRestController {
-    public IRendezvousService rendezvousService;
+
+   public IRendezvousService rendezvousService;
     // Endpoint to retrieve all blocs
     // Example: GET http://localhost:8089/tpfoyer/bloc/retrieve-all-blocs
     @GetMapping("/retrieve-all-rendezvous")

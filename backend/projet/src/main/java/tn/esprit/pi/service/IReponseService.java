@@ -1,6 +1,6 @@
-package com.pi.projet.service;
+package tn.esprit.pi.service;
 
-import com.pi.projet.entity.Reponse;
+import tn.esprit.pi.entity.Reponse;
 
 import java.util.List;
 

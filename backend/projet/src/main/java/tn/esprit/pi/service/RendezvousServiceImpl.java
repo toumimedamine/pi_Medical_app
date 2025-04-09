@@ -1,16 +1,15 @@
-package com.pi.projet.service;
+package tn.esprit.pi.service;
 
-import com.pi.projet.entity.Rendezvous;
-import com.pi.projet.repository.RendezvousRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.pi.entity.Rendezvous;
+import tn.esprit.pi.repository.RendezvousRepository;
 
 import java.util.List;
-
 @Service
 @AllArgsConstructor
-public class RendezvousServiceImpl implements IRendezvousService {
+public class RendezvousServiceImpl  implements IRendezvousService{
     public RendezvousRepository rendezvousRepository;
 
     // Retrieve all rendezvous
@@ -38,5 +37,4 @@ public class RendezvousServiceImpl implements IRendezvousService {
     public Rendezvous modifyRendezvous(Rendezvous rendezvous) {
         return rendezvousRepository.save(rendezvous);
     }
-
 }

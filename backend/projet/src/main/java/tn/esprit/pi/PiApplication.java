@@ -1,13 +1,13 @@
-package com.pi.projet;
+package tn.esprit.pi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BachendApplication {
+public class PiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BachendApplication.class, args);
+		SpringApplication.run(PiApplication.class, args);
 	}
 
 }
