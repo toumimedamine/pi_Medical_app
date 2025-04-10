@@ -1,0 +1,16 @@
+.header_section {
+  background: linear-gradient(to right, #32ac93, #7dbdb6);
+  height: 100px; /* Ajustez la hauteur selon vos besoins */
+}
+
+/* Style supplémentaire pour améliorer la lisibilité du texte */
+.navbar-brand,
+.nav-link {
+  color: white; /* Couleur du texte */
+  text-decoration: none;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #e6e6e6; /* Changement de couleur au survol */
+}

@@ -1,0 +1,58 @@
+<section class="contact_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>{{ idUrgence ? 'Modifier Votre Urgence' : 'Soumettre Votre Urgence' }}</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container contact-form">
+          <form [formGroup]="urgenceForm" (ngSubmit)="save()">
+            <!-- Champ Description -->
+            <div class="form-group">
+              <label for="description">Description :</label>
+              <textarea id="description" formControlName="description" class="form-control" placeholder="Décrivez votre situation..."></textarea>
+              <small *ngIf="urgenceForm.get('description')?.invalid && urgenceForm.get('description')?.touched" class="text-danger">
+                La description est requise et doit contenir au moins 10 caractères.
+              </small>
+            </div>
+
+            <!-- Champ Adresse (Optionnel) -->
+            <div class="form-group">
+              <label for="addressePatient">Adresse (optionnel) :</label>
+              <input id="addressePatient" formControlName="addressePatient" class="form-control" placeholder="Entrez votre adresse si nécessaire...">
+            </div>
+
+            <!-- Champ Type d'Urgence -->
+            <div class="form-group">
+              <label for="typeUrgence">Type d'urgence :</label>
+              <select id="typeUrgence" formControlName="typeUrgence" class="form-control">
+                <option value="" disabled>Sélectionnez un type</option>
+                <option *ngFor="let type of typeUrgenceOptions" [value]="type">{{ type }}</option>
+              </select>
+              <small *ngIf="urgenceForm.get('typeUrgence')?.invalid && urgenceForm.get('typeUrgence')?.touched" class="text-danger">
+                Veuillez sélectionner un type d'urgence.
+              </small>
+            </div>
+
+            <!-- Boutons de soumission et retour -->
+            <div class="d-flex justify-content-between mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="urgenceForm.invalid">
+                {{ idUrgence ? 'Mettre à jour' : 'Soumettre' }}
+              </button>
+              <button type="button" class="btn btn-secondary ml-2" (click)="navigateToUrgenceList()">
+                Retour à la liste
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+          <div class="img-box">
+              <img src="assets/images/d2.jpg">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- end contact section -->

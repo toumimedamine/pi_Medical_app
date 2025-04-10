@@ -1,0 +1,249 @@
+/* Styles globaux */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5; /* Fond légèrement gris clair */
+  margin: 0;
+  padding: 0;
+}
+
+.urgence-front {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  color: #333;
+  font-size: 24px;
+  margin: 0;
+}
+
+.button-container,
+.action-buttons,
+.filter-container {
+  display: flex;
+  gap: 10px; /* Espacement entre les éléments */
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 50px;
+  color: #888;
+  font-size: 18px;
+}
+
+.empty-state i {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Styles des boutons */
+.btn-primary,
+.btn-third,
+.btn-info {
+  background-color: #32ac93;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.btn-warning {
+  background-color: #ffbb33;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+
+/* Icônes FontAwesome */
+.fa-eye::before,
+.fa-edit::before,
+.fa-trash::before,
+.fa-check::before,
+.fa-times::before {
+  margin-right: 5px;
+}
+
+/* Styles des accordéons */
+.accordion-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.accordion-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.status-badge,
+.priority-badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.accordion-body {
+  padding: 15px;
+}
+
+/* Couleurs dynamiques pour l'en-tête de l'accordéon */
+.header-critique {
+  background-color: #ff4d4d; /* Rouge critique */
+  color: #fff;
+}
+
+.header-moyen {
+  background-color: #337ab7; /* Bleu moyen */
+  color: #fff;
+}
+
+.header-faible {
+  background-color: #2ecc71; /* Vert faible */
+  color: #fff;
+}
+
+.badge-critique {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+
+.badge-moyen {
+  background-color: #337ab7;
+  color: #fff;
+}
+
+.badge-faible {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+/* Styles des filtres et champs de recherche */
+.search-container,
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.search-container input,
+.filter-item select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-container input:focus,
+.filter-item select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-item label {
+  font-weight: bold;
+}
+
+/* Nouveaux styles pour la section de recherche et filtres */
+.search-and-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.search-and-filter-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacement horizontal entre les éléments */
+}
+
+.search-item input,
+.date-filter-item input,
+.filter-item select {
+  height: 40px; /* Hauteur uniforme pour tous les champs */
+  width: 100%;
+  max-width: 300px; /* Limiter la largeur pour éviter le débordement */
+}
+
+.date-filter-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-filter-item label {
+  margin-right: 10px;
+}
+
+.date-filter-item input {
+  width: 100%;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-and-filter-container {
+    flex-direction: column;
+  }
+}

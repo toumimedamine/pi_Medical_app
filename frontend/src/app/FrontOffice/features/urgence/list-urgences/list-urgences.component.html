@@ -1,0 +1,137 @@
+<div class="urgence-front">
+  <!-- Header Section -->
+  <header class="dashboard-header">
+    <h1>Urgences</h1>
+    <div class="button-container">
+      <button routerLink="/addUrgence" class="btn btn-primary">
+        <i class="fa fa-plus"></i> Ajouter une urgence
+      </button>
+      <button (click)="exportExcel()" class="btn btn-info">
+        <i class="fa fa-download"></i> Exporter Excel
+      </button>
+    </div>
+  </header>
+
+  <!-- Section de Recherche et Filtres -->
+  <section class="search-and-filters">
+    <div class="search-and-filter-container">
+      <div class="search-item">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          placeholder="Rechercher par patient ou adresse..."
+          class="form-control"
+          (input)="onSearch()"
+        />
+      </div>
+
+      <div class="date-filter-item">
+        <label for="dateFilter">Rechercher par date :</label>
+        <input
+          type="date"
+          id="dateFilter"
+          [(ngModel)]="selectedDate"
+          (change)="onDateChange()"
+          class="form-control"
+        />
+      </div>
+
+      <div class="filter-item status-filter">
+        <label for="statusFilter">Filtrer par statut :</label>
+        <select id="statusFilter" [(ngModel)]="selectedStatus" (change)="onFilterChange()">
+          <option value="">Tous</option>
+          <option value="En_Attente">EN ATTENTE</option>
+          <option value="En_Cours">EN COURS</option>
+          <option value="Traite">TRAITÉ</option>
+        </select>
+      </div>
+
+      <div class="filter-item type-filter">
+        <label for="typeFilter">Filtrer par type :</label>
+        <select id="typeFilter" [(ngModel)]="selectedType" (change)="onFilterChange()">
+          <option value="">Tous</option>
+          <option value="A_Domicile">À DOMICILE</option>
+          <option value="En_Ligne">EN LIGNE</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message si la liste est vide -->
+  <div *ngIf="!filteredUrgences || filteredUrgences.length === 0" class="empty-state">
+    <i class="fa fa-exclamation-circle"></i>
+    <p>Aucune urgence disponible.</p>
+  </div>
+
+  <!-- Accordéons pour les urgences -->
+  <div class="accordion-container">
+    <div *ngFor="let u of filteredUrgences" class="accordion-item">
+      <!-- En-tête de l'accordéon avec couleur dynamique -->
+      <div
+        class="accordion-header"
+        (click)="toggleAccordion(u.idUrgence)"
+        [ngClass]="{
+          'header-critique': u.priority === 'Critique',
+          'header-moyen': u.priority === 'Moyen',
+          'header-faible': u.priority === 'Faible'
+        }"
+      >
+        <h3>{{ u.patient.nom }}</h3>
+        <span class="status-badge">{{ formatStatut(u.statutUrgence) }}</span>
+        <span class="priority-badge" [ngClass]="{
+          'badge-critique': u.priority === 'Critique',
+          'badge-moyen': u.priority === 'Moyen',
+          'badge-faible': u.priority === 'Faible'
+        }">
+          {{ u.priority }}
+        </span>
+      </div>
+
+      <!-- Corps de l'accordéon -->
+      <div
+        class="accordion-body"
+        *ngIf="activeId === u.idUrgence"
+      >
+        <p><strong>Description :</strong> {{ u.description }}</p>
+        <p><strong>Date :</strong> {{ u.date ? (u.date | date:'medium') : 'Non renseigné' }}</p>
+        <p><strong>Adresse :</strong> {{ u.addressePatient || 'Non renseigné' }}</p>
+        <p><strong>Type :</strong> {{ formatType(u.typeUrgence) || 'Non renseigné' }}</p>
+        <div class="action-buttons">
+          <button
+            [routerLink]="['/urgenceDetails', u.idUrgence]"
+            class="btn btn-info">
+            <i class="fa fa-eye"></i> Détails
+          </button>
+          <button
+            (click)="updateUrgence(u.idUrgence)"
+            class="btn btn-warning">
+            <i class="fa fa-edit"></i> Modifier
+          </button>
+          <button
+            (click)="deleteUrgence(u.idUrgence)"
+            class="btn btn-danger">
+            <i class="fa fa-trash"></i> Supprimer
+          </button>
+          <button
+            *ngIf="u.statutUrgence === 'En_Attente'"
+            (click)="prendreEnCharge(u.idUrgence)"
+            class="btn btn-secondary">
+            <i class="fa fa-check"></i> Prise En Charge
+          </button>
+          <ng-container *ngIf="u.statutUrgence === 'En_Cours'">
+            <button
+              (click)="seDecharger(u.idUrgence, u.consultationUrgente.idConsultationUrgente)"
+              class="btn btn-dark">
+              <i class="fa fa-times"></i> Se Décharger
+            </button>
+            <button
+              (click)="seTerminer(u.idUrgence, u.consultationUrgente.idConsultationUrgente)"
+              class="btn btn-third">
+              <i class="fa fa-check"></i> Se Terminer
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

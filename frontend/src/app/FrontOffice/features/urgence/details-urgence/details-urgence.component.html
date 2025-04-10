@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Détails de l'urgence</h2>
+
+  <div *ngIf="urgence; else loading">
+    <p><strong>Description :</strong> {{ urgence.description }}</p>
+    <p><strong>Date :</strong> {{ urgence.date | date:'medium' }}</p>
+    <p><strong>Adresse :</strong> {{ urgence.addressePatient || 'Non spécifiée' }}</p>
+    <p><strong>Type d'urgence :</strong> {{ urgence.typeUrgence }}</p>
+    <p><strong>Statut :</strong> {{ urgence.statutUrgence }}</p>
+    <div *ngIf="urgence.consultationUrgente;" class="mt-4 p-3 border border-success rounded">
+      <p><strong>Date :</strong> {{ urgence.consultationUrgente.date | date:'medium' }}</p>
+      <p><strong>A Suivre ?</strong> {{ urgence.consultationUrgente.asuivre ? 'YES' : 'NO' }} </p>
+      <p *ngif ="urgence.consultationUrgente.lienVideo !== null "><strong>Link :</strong> {{ urgence.consultationUrgente.lienVideo }}</p>
+    </div>
+  </div>
+
+  <!-- Message de chargement -->
+  <ng-template #loading>
+    <p>Chargement des détails...</p>
+  </ng-template>
+
+  <!-- Bouton Retour -->
+  <button class="btn btn-secondary mt-3" (click)="backToList()">
+    <i class="fas fa-arrow-left"></i> Retour à la liste
+  </button>
+</div>
